@@ -15,7 +15,7 @@ const Landing = () => {
         <p className="font-zeroestwo font-normal text-[2.63rem] leading-[3rem] lg:text-[4rem] lg:leading-[4rem] text-primary">
           Grypto
         </p>
-        <p className="font-causten font-normal text-2xl px-6 text-center lg:text-4xl lg:leading-[4rem] text-primary mt-7 mb-10">
+        <p className="font-causten font-normal text-[23px] px-6 text-center lg:text-4xl lg:leading-[4rem] text-primary mt-7 mb-10">
           the answer to Crypto gaming, onboarding and management.
         </p>
         <div>
