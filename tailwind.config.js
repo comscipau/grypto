@@ -5,11 +5,13 @@ module.exports = {
     extend: {
       colors: {
         primary: "#8247E5",
+        secondary: "#651FDA",
       },
       fontFamily: {
         causten: ["Causten", "sans-serif"],
         zeroestwo: ["ZeroesTwo"],
         spacegrotesk: ["SpaceGrotesk", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       backgroundImage: {
         footer: "url('/src/assets/footer-bg.png')",

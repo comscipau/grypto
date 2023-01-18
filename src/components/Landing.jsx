@@ -1,5 +1,7 @@
 import React from "react";
 import LOGO from "../assets/grypto.png";
+import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -16,29 +18,20 @@ const Landing = () => {
           Grypto
         </p>
         <p className="font-causten font-normal text-[23px] px-6 text-center lg:text-4xl lg:leading-[4rem] text-primary mt-7 mb-10">
-          the answer to Crypto gaming, onboarding and management.
+          The answer to Crypto Token onboarding and management for the gaming
+          industry.
         </p>
         <div>
-          <button className="py-[0.875rem] px-[3.06rem] lg:py-[1.31rem] lg:px-[6.81rem] myBtn">
-            <span className="text-xl font-normal leading-4 text-white lg:text-2xl lg:leading-8 font-causten">
-              Sign In / Sign Up
-            </span>
-          </button>
+          <Link to="/wallet">
+            <button className="py-[0.875rem] px-[3.06rem] lg:py-[1.31rem] lg:px-[6.81rem] myBtn">
+              <span className="text-xl font-normal leading-4 text-white lg:text-2xl lg:leading-8 font-causten">
+                Sign In / Sign Up
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
-      <div className="w-full mt-20 bg-bottom bg-no-repeat bg-contain md:bg-cover bg-footerMobile md:bg-footer">
-        <div className="flex flex-col-reverse items-center gap-2 lg:flex-row lg:justify-between px-6 pb-4 pt-[7.88rem] lg:pt-[16.7rem]">
-          <p className="text-xs font-light leading-6 text-white lg:text-base font-spacegrotesk">
-            Copyright 2023 Grypto.io | All Rights Reserved.
-          </p>
-          <a
-            href="/"
-            className="text-xs font-light leading-6 text-white lg:text-base font-spacegrotesk"
-          >
-            Disclaimer
-          </a>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };
