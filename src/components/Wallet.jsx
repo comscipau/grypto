@@ -65,10 +65,10 @@ const Wallet = () => {
               Show Wallet / Deposit Funds
             </button>
             <button className="myBtn font-causten font-normal text-xl lg:text-2xl text-white py-[1.02rem]">
-              Buy using Prepaid Visa
+              Withdraw Funds with VISA
             </button>
             <button className="myBtn font-causten font-normal text-xl lg:text-2xl text-white py-[1.02rem]">
-              Send Funds to Cryptosphere
+              Send Funds to Others
             </button>
           </div>
         </div>
