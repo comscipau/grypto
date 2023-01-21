@@ -7,9 +7,25 @@ const Wallet = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const element = document.documentElement;
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function onWindowsMatch() {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) && darkQuery.matches)
+    ) {
+      element.classList.add("dark");
+    } else {
+      element.classList.remove("dark");
+    }
+  }
+
+  onWindowsMatch();
+
   return (
-    <div>
-      <div className="px-6 lg:px-[8.81rem] mt-9 lg:mt-[6.75rem] flex flex-col lg:flex-row justify-between">
+    <div className="dark:bg-black bg-white">
+      <div className="px-6 lg:px-[8.81rem] pt-9 lg:pt-[6.75rem] flex flex-col lg:flex-row justify-between">
         <div>
           <div className="hidden lg:flex items-center mb-[1.1875rem]">
             <img src={LOGO} alt="logo" className="w-[102px] h-[102px] mr-4" />
@@ -25,22 +41,22 @@ const Wallet = () => {
               </span>
             </button>
           </div>
-          <div className="flex justify-center lg:justify-start font-causten font-normal text-xl lg:text-2xl text-primary mb-1">
+          <div className="flex justify-center lg:justify-start font-causten font-normal text-xl lg:text-2xl text-primary dark:text-white mb-1">
             <p className="mr-1 lg:mr-2">$MATIC Balance:</p>
             <p>0.00</p>
           </div>
-          <div className="flex justify-center lg:justify-start font-causten font-normal text-xl lg:text-2xl text-primary mb-[0.9375rem]">
+          <div className="flex justify-center lg:justify-start font-causten font-normal text-xl lg:text-2xl text-primary dark:text-white mb-[0.9375rem]">
             <p className="mr-1 lg:mr-[0.875rem]">$USDC Balance:</p>
             <p>0.00</p>
           </div>
           <div className="flex mb-[2.375rem]">
-            <button className="font-causten font-normal text-2xl text-primary hidden lg:block">
+            <button className="font-causten font-normal text-2xl text-primary dark:text-white hidden lg:block">
               Disconnect Wallet
             </button>
-            <span className="font-causten font-normal text-5xl leading-8 text-primary mx-2 text-center hidden lg:block">
+            <span className="font-causten font-normal text-5xl leading-8 text-primary dark:text-white mx-2 text-center hidden lg:block">
               |
             </span>
-            <button className="font-causten font-normal text-base lg:text-2xl text-primary mx-auto lg:mx-0">
+            <button className="font-causten font-normal text-base lg:text-2xl text-primary dark:text-white mx-auto lg:mx-0">
               <span className="underline lg:no-underline">Refresh Balance</span>
             </button>
           </div>

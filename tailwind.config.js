@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         primary: "#8247E5",
         secondary: "#651FDA",
+        myToggle: "#4ED938",
       },
       fontFamily: {
         causten: ["Causten", "sans-serif"],
