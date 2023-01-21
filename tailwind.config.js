@@ -8,6 +8,7 @@ module.exports = {
         primary: "#8247E5",
         secondary: "#651FDA",
         myToggle: "#4ED938",
+        third: 'FFFFFF'
       },
       fontFamily: {
         causten: ["Causten", "sans-serif"],

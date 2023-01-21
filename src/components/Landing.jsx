@@ -1,12 +1,18 @@
 import React from "react";
 import LOGO from "../assets/grypto.png";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import SUN from "../assets/sun.svg";
 import MOON from "../assets/moon.svg";
 import { useState, useEffect } from "react";
+import { web3 } from "../libs/magic";
 
 const Landing = () => {
+
+  const navigate = useNavigate();
+
+  const [account, setAccount] = useState(null);
+
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -45,6 +51,19 @@ const Landing = () => {
     }
   }, [theme]);
 
+
+  const login = async () => {
+    web3.eth
+      .getAccounts()
+      .then((accounts) => {
+        setAccount(accounts?.[0]);
+        navigate('/wallet',{state:{account:accounts?.[0]}});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
   return (
     <div className="dark:bg-black bg-white transition-colors ease-in-out duration-500">
       <div className="flex justify-end mr-6 lg:mr-[8.75rem] mb-[4.5rem] lg:mb-[9px] pt-7 lg:pt-[3.94rem]">
@@ -86,13 +105,12 @@ const Landing = () => {
           industry.
         </p>
         <div>
-          <Link to="/wallet">
-            <button className="py-[0.875rem] px-[3.06rem] lg:py-[1.31rem] lg:px-[6.81rem] myBtn">
-              <span className="text-xl font-normal leading-4 text-white lg:text-2xl lg:leading-8 font-causten">
-                Sign In / Sign Up
-              </span>
-            </button>
-          </Link>
+        {!account && (
+      <button onClick={login} className="py-[0.875rem] px-[3.06rem] lg:py-[1.31rem] lg:px-[6.81rem] myBtn">
+          Sign In / Sign Up
+        </button>
+      )}
+         
         </div>
       </div>
       <Footer />
