@@ -46,7 +46,7 @@ const Landing = () => {
   }, [theme]);
 
   return (
-    <div className="dark:bg-black bg-white">
+    <div className="dark:bg-black bg-white transition-colors ease-in-out duration-500">
       <div className="flex justify-end mr-6 lg:mr-[8.75rem] mb-[4.5rem] lg:mb-[9px] pt-7 lg:pt-[3.94rem]">
         <div className="flex rounded-[20px] bg-primary text-white relative">
           <img
@@ -63,9 +63,9 @@ const Landing = () => {
           />
           <div
             className={
-              theme == "dark"
-                ? "w-[3.4rem] rounded-full bg-myToggle absolute top-0 left-0 bottom-0"
-                : "w-[3.4rem] rounded-full bg-myToggle absolute top-0 right-0 bottom-0"
+              theme === "dark"
+                ? "w-[3.4rem] rounded-full bg-myToggle absolute top-0 left-0 bottom-0 translate-x-0 ease-in-out duration-500"
+                : "w-[3.4rem] rounded-full bg-myToggle absolute top-0 left-0 bottom-0 translate-x-full ease-in-out duration-500"
             }
           />
         </div>
