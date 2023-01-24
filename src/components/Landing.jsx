@@ -106,8 +106,10 @@ const Landing = () => {
         </p>
         <div>
         {!account && (
-      <button onClick={login} className="py-[0.875rem] px-[3.06rem] lg:py-[1.31rem] lg:px-[6.81rem] myBtn">
-          Sign In / Sign Up
+        <button onClick={login} className="py-[0.875rem] px-[3.06rem] lg:py-[1.31rem] lg:px-[6.81rem] myBtn">
+          <span className="text-xl font-normal leading-4 text-white lg:text-2xl lg:leading-8 font-causten">
+            Sign In / Sign Up
+          </span>
         </button>
       )}
          

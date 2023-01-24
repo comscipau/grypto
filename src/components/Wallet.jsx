@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { provider } from "../libs/provider";
 import '@uniswap/widgets/fonts.css'
 import { SupportedLocale, SUPPORTED_LOCALES, SwapWidget } from '@uniswap/widgets'
@@ -299,7 +299,7 @@ const sendTx = async () => {
               {option.label}
             </MenuItem>
           ))}
-        ></TextField>
+        </TextField>
         </div>
         <div style={{display: 'flex',  justifyContent:'space-around', alignItems:'center'}}>
         <Button style={{fontSize:20,color:'white'}} onClick={sendTx} className="button-row">
@@ -325,7 +325,7 @@ const sendTx = async () => {
 
           <div className="flex justify-between lg:hidden items-center mb-[5.625rem]">
             <img src={LOGO} alt="logo" className="w-16 h-16 mr-4" />
-            <button className="bg-primary rounded-[25px] py-[0.6875rem] px-[2.3125rem]">
+            <button onClick={disconnect} className="bg-primary rounded-[25px] py-[0.6875rem] px-[2.3125rem]">
               <span className="font-causten font-normal text-white text-base leading-4 ">
                 Disconnect Wallet
               </span>
