@@ -1,6 +1,8 @@
 import React from "react";
 import LOGO from "../assets/grypto.png";
 import Footer from "../components/Footer";
+import SUN from "../assets/sun.svg";
+import MOON from "../assets/moon.svg";
 import {useLocation,useNavigate} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { magic,web3 } from "../libs/magic";
@@ -66,6 +68,10 @@ const TOKEN_LIST = [{
     window.scrollTo(0, 0);
   }, []);
 
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
   const element = document.documentElement;
   const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -81,6 +87,25 @@ const TOKEN_LIST = [{
   }
 
   onWindowsMatch();
+
+  useEffect(() => {
+    switch (theme) {
+      case "dark":
+        element.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        break;
+
+      case "light":
+        element.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        break;
+
+      default:
+        localStorage.removeItem("theme");
+        onWindowsMatch();
+        break;
+    }
+  }, [theme]);
 
   const [nameAddress, setNameAddress] = React.useState("");
   const [nameAmount, setNameAmount] = React.useState("");
@@ -250,7 +275,7 @@ const sendTx = async () => {
 
 
   return (
-    <div className="dark:bg-black bg-white">
+    <div className="transition-colors duration-500 ease-in-out dark:bg-black bg-white">
 
   
 <Modal
@@ -314,6 +339,29 @@ const sendTx = async () => {
   </Box>
 </Modal>
 
+      <div className="flex justify-end mr-6 lg:mr-[9.5rem] pt-7 lg:pt-[3.94rem]">
+        <div className="flex rounded-[20px] bg-primary text-white relative">
+          <img
+            src={MOON}
+            alt="MOON"
+            className="cursor-pointer py-[8px] pl-[19px]"
+            onClick={() => setTheme("dark")}
+          />
+          <img
+            src={SUN}
+            alt="SUN"
+            className="cursor-pointer pr-[19px] ml-6"
+            onClick={() => setTheme("light")}
+          />
+          <div
+            className={
+              theme === "dark"
+                ? "w-[3.4rem] rounded-full bg-myToggle absolute top-0 left-0 bottom-0 translate-x-0 ease-in-out duration-500"
+                : "w-[3.4rem] rounded-full bg-myToggle absolute top-0 left-0 bottom-0 translate-x-full ease-in-out duration-500"
+            }
+          />
+        </div>
+      </div>
       <div className="px-6 lg:px-[8.81rem] pt-9 lg:pt-[6.75rem] flex flex-col lg:flex-row justify-between">
         <div>
           <div className="hidden lg:flex items-center mb-[1.1875rem]">
