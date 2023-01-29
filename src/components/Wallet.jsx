@@ -362,7 +362,7 @@ const sendTx = async () => {
           />
         </div>
       </div>
-      <div className="px-6 lg:px-[8.81rem] pt-9 lg:pt-[6.75rem] flex flex-col lg:flex-row justify-between">
+      <div className="px-6 lg:px-[8.81rem] pt-9 flex flex-col lg:flex-row justify-between">
         <div>
           <div className="hidden lg:flex items-center mb-[1.1875rem]">
             <img src={LOGO} alt="logo" className="w-[102px] h-[102px] mr-4" />
