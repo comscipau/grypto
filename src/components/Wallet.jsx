@@ -255,7 +255,8 @@ const showWallet = async () => {
 const prepaidVisa = async () => {
   console.log("Clicked")
   try {
-    window.location.assign('https://checkout.fcfpay.com/prepaid/b93dguhfvykuqw74yzph80j4lsjd1e660tx6zwlfld1mzjfkv1m0bke4oxhw');
+    window.open('https://checkout.fcfpay.com/prepaid/b93dguhfvykuqw74yzph80j4lsjd1e660tx6zwlfld1mzjfkv1m0bke4oxhw', '_blank');
+  //  window.location.assign('https://checkout.fcfpay.com/prepaid/b93dguhfvykuqw74yzph80j4lsjd1e660tx6zwlfld1mzjfkv1m0bke4oxhw');
   } catch(e) {
     console.log("Exception: "+e)
   }
