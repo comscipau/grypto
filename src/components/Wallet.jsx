@@ -37,6 +37,10 @@ const currencies = [
   {
     value: 'MATIC',
     label: 'MATIC',
+  },
+  {
+    value: 'USDC',
+    label: 'USDC',
   }
 ];
 
@@ -112,6 +116,8 @@ const TOKEN_LIST = [{
   const [usdcBalance, setUsdcBalance] = useState(null);
   const [maticBalance, setMaticBalance] = useState(null);
 
+  const [selectedCurrency, setSelectedCurrency] = useState(null);
+
   const handleChangeAmount = (event) => {
     setNameAmount(event.target.value);
   };
@@ -160,6 +166,13 @@ const TOKEN_LIST = [{
    
     
   },[account]);
+
+  useEffect(() => {
+    console.log("SELECTED:"+ selectedCurrency)
+  
+   
+    
+  },[selectedCurrency]);
 
 
 
@@ -253,6 +266,56 @@ const prepaidVisa = async () => {
 
 const sendTx = async () => {
 
+  if(selectedCurrency == "USDC") {
+
+    let tokenAddress = "0x2791bca1f2de4661ed88a30c99a7a9449aa84174";
+    let toAddress = nameAddress;
+    let fromAddress = (await web3.eth.getAccounts())[0];
+    // Use BigNumber
+    let decimals = web3.utils.toBN(6);
+    
+    let minABI = [
+      // transfer
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_to",
+            "type": "address"
+          },
+          {
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "transfer",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "type": "function"
+      }
+    ];
+    // Get ERC20 Token contract instance
+    let contract = new web3.eth.Contract(minABI, tokenAddress);
+    // calculate ERC20 token amount
+    let value = web3.utils.toWei(nameAmount, "picoether")
+    
+    try {
+      let tx = await contract.methods.transfer(toAddress, value).send({from: fromAddress,gasPrice: web3.utils.toWei("200", "gwei")})
+      console.log(tx.transactionHash)
+      // CALL API
+  
+   
+
+  
+    } catch(e) {
+    console.log(e)
+    }
+
+  } else { 
   const publicAddress = (await web3.eth.getAccounts())[0];
   const txnParams = {
     from: publicAddress,
@@ -271,6 +334,7 @@ const sendTx = async () => {
     .catch((error) => {
       console.log(error);
     });
+  }
 };
 
 
@@ -320,14 +384,14 @@ const sendTx = async () => {
           helperText="Please Select Matic"
           >
           {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
+            <MenuItem onClick={()=>{setSelectedCurrency(option.value)}} key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
         </TextField>
         </div>
         <div style={{display: 'flex',  justifyContent:'space-around', alignItems:'center'}}>
-        <Button style={{fontSize:20,color:'white'}} onClick={sendTx} className="button-row">
+        <Button style={{fontSize:20,color:'black'}} onClick={sendTx} className="button-row">
           Send
           </Button>
           </div>
