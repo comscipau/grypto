@@ -1,7 +1,14 @@
 import React from "react";
+import Modal from "./Modal";
+import { useState } from "react";
 
 const Footer = () => {
   // NOTE: className="mountainSM lg:mountainLG" doesn't change the background correctly hence the 2 version display
+
+  const [showModal, setShowModal] = useState(false);
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <div>
@@ -11,12 +18,12 @@ const Footer = () => {
           <p className="text-xs font-light leading-6 text-white lg:text-base font-spacegrotesk">
             Copyright 2023 Grypto.io | All Rights Reserved.
           </p>
-          <a
-            href="/"
+          <button
             className="text-xs font-light leading-6 text-white lg:text-base font-spacegrotesk"
+            onClick={() => setShowModal(true)}
           >
             Disclaimer
-          </a>
+          </button>
         </div>
       </div>
 
@@ -26,14 +33,15 @@ const Footer = () => {
           <p className="text-xs font-light leading-6 text-white lg:text-base font-spacegrotesk">
             Copyright 2023 Grypto.io | All Rights Reserved.
           </p>
-          <a
-            href="/"
+          <button
             className="text-xs font-light leading-6 text-white lg:text-base font-spacegrotesk"
+            onClick={() => setShowModal(true)}
           >
             Disclaimer
-          </a>
+          </button>
         </div>
       </div>
+      <Modal visible={showModal} onClose={closeModal} />
     </div>
   );
 };
