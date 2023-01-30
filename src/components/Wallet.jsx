@@ -275,7 +275,7 @@ const sendTx = async () => {
 
 
   return (
-    <div className="transition-colors duration-500 ease-in-out dark:bg-black bg-white">
+    <div className="dark:bg-black bg-white">
 
   
 <Modal

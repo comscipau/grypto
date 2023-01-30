@@ -65,7 +65,7 @@ const Landing = () => {
   };
   
   return (
-    <div className="dark:bg-black bg-white transition-colors ease-in-out duration-500">
+    <div className="dark:bg-black bg-white">
       <div className="flex justify-end mr-6 lg:mr-[8.75rem] mb-[4.5rem] lg:mb-[9px] pt-7 lg:pt-[3.94rem]">
         <div className="flex rounded-[20px] bg-primary text-white relative">
           <img
