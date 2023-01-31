@@ -354,7 +354,7 @@ const sendTx = async () => {
 
 
     <Typography id="modal-modal-title" variant="h6" component="h2">
-      Send MATIC
+      Send MATIC/USDC
 
 <div style={{paddingTop:0}}>
       <TextField
@@ -382,7 +382,7 @@ const sendTx = async () => {
           select
           label=""
           defaultValue="MATIC"
-          helperText="Please Select Matic/USDC"
+          helperText="Please Select MATIC/USDC"
           >
           {currencies.map((option) => (
             <MenuItem onClick={()=>{setSelectedCurrency(option.value)}} key={option.value} value={option.value}>
