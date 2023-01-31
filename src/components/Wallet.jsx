@@ -382,7 +382,7 @@ const sendTx = async () => {
           select
           label=""
           defaultValue="MATIC"
-          helperText="Please Select Matic"
+          helperText="Please Select Matic/USDC"
           >
           {currencies.map((option) => (
             <MenuItem onClick={()=>{setSelectedCurrency(option.value)}} key={option.value} value={option.value}>
@@ -399,7 +399,7 @@ const sendTx = async () => {
 
     </Typography>
     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-      Please use only MATIC on Polygon Network
+      Please use only MATIC/USDC on Polygon Network
     </Typography>
   </Box>
 </Modal>
